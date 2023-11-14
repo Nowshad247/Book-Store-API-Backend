@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
-import Iuser from './user.interface'
+import Iuser, { UserModel } from './user.interface'
 
 const userSchema = new Schema<Iuser>({
   name: { type: String, required: true },
@@ -9,6 +9,6 @@ const userSchema = new Schema<Iuser>({
   role: { type: String },
 })
 
-const UserModel = mongoose.model('BookUser', userSchema)
+const UserModel = mongoose.model<Iuser, UserModel>('BookUser', userSchema)
 
 export default UserModel

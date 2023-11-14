@@ -14,8 +14,8 @@ import { Error } from 'mongoose'
 
 const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   config.env === 'DEVELOPMENT'
-    ? console.log(`🐱‍🏍 globalErrorHandler ~~`, { error })
-    : errorlogger.error(`🐱‍🏍 globalErrorHandler ~~`, error)
+    ? console.log(`🐱 globalErrorHandler ~~`, { error })
+    : errorlogger.error(`🐱globalErrorHandler ~~`, error)
 
   let statusCode = 500
   let message = 'Something went wrong !'
@@ -60,6 +60,7 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   }
 
   res.status(statusCode).json({
+    statusCode,
     success: false,
     message,
     errorMessages,
