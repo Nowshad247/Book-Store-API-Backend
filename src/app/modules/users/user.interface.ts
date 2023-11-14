@@ -1,3 +1,5 @@
+import { Model } from 'mongoose'
+
 type Iuser = {
   name: string
   email: string
@@ -5,5 +7,5 @@ type Iuser = {
   password: string
   role: 'admin' | 'user'
 }
-
+export type UserModel = Model<Iuser, Record<string, unknown>>
 export default Iuser
