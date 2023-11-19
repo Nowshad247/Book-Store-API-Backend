@@ -16,7 +16,56 @@ const createUser: RequestHandler = catchAsync(
     })
   },
 )
+const userProfile: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const datas = req.params.id
+    if (datas) {
+      const result = await userService.userProfileData(datas)
+      sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'get Sucess',
+        data: result,
+      })
+    } else {
+      throw new Error()
+    }
+  },
+)
+const login: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const { email, password } = req.body
+    if (req.params) {
+      const result = await userService.loginData({ email, password })
+
+      if (result == null) {
+        throw new Error()
+      }
+
+      sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'get Sucess',
+        data: result,
+      })
+    } else {
+      throw new Error()
+    }
+  },
+)
+const allUser: RequestHandler = catchAsync(async (req, res) => {
+  const result = await userService.GetAllUser()
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'We Get data',
+    data: result,
+  })
+})
 
 export const userController = {
   createUser,
+  userProfile,
+  login,
+  allUser,
 }

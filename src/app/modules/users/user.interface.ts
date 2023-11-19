@@ -7,5 +7,9 @@ type Iuser = {
   password: string
   role: 'admin' | 'user'
 }
+export type IuserPassword = {
+  email: string
+  password: string
+}
 export type UserModel = Model<Iuser, Record<string, unknown>>
 export default Iuser

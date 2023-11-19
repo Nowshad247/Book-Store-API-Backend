@@ -9,5 +9,11 @@ const userZodValidation = z.object({
     role: z.enum(['admin', 'user']),
   }),
 })
+export const userZodloginValidation = z.object({
+  body: z.object({
+    email: z.string().email(),
+    password: z.string(),
+  }),
+})
 
 export default userZodValidation

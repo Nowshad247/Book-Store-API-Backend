@@ -13,6 +13,10 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/v1', router)
 
+app.get('/', (req: Request, res: Response) => {
+  res.send('Perfect app is working ')
+})
+
 app.get('/Home', (req: Request, res: Response) => {
   res.send('Perfect app is working ')
 })
